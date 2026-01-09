@@ -1,0 +1,11 @@
+
+
+
+POST ==> /URL
+        ==> first generates and return shortened URL in the format ==> example.com/random-number
+
+GET ==> /URL/:id
+        ==> redirects the user to the original URL
+
+GET /URL/analytics/:id
+        ==> returns the no. of clicks for the provided short URLs' ID
