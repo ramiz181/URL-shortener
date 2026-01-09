@@ -34,3 +34,14 @@ export const handleRedirectURL = async (req, res) => {
 
     // res.send("Hello")
 }
+
+export const handleGetAnalytics = async (req, res) => {
+
+    const shortURL = req.params.shortID
+
+    const result = await URL.findOne({ shortURL })
+    res.json({
+        totalClicks: result.visitorHistory.length,
+        analytics: result.visitorHistory
+    })
+}
