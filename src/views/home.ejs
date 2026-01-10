@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>URL shortener</h3>
+
+    <!-- backend sy jo data ata h wo locals k andr hota h -->
+    <% if (locals.shortID) { %>
+        <p>http:localhost:8001/url/<%= shortID %>
+        </p>
+        <% } %>
+
+
+            <div>
+                <form method="POST" action="/url">
+                    <label>Enter Your Original URL</label>
+                    <input type="text" name="redirectURL" placeholder="Enter URL">
+                    <button type="submit">Generate</button>
+                </form>
+            </div>
+
+</body>
+
+</html>

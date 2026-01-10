@@ -13,7 +13,10 @@ export const handleGenerateURL = async (req, res) => {
         shortURL: shortID,
         redirectURL,
     })
-    res.status(200).json({ status: 'success', message: 'short URL created' })
+    res.render('home', {
+        shortID
+    })
+    // res.status(200).json({ status: 'success', message: 'short URL created' })
 }
 
 export const handleRedirectURL = async (req, res) => {
