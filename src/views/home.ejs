@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,7 +32,39 @@
                     <button type="submit">Generate</button>
                 </form>
             </div>
+            <br /><br />
 
+
+            <% if (locals.URLs) { %>
+                <table>
+                    <thead>
+                        <th>S.no</th>
+                        <th>Short URL</th>
+                        <th>Redirect Link</th>
+                        <th>Clicks</th>
+                    </thead>
+
+                    <tbody>
+                        <% URLs.forEach((url, index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= index+1 %>
+                                </td>
+                                <td>
+                                    <a target="_blank" href="http://localhost:8001/url/<%= url.shortURL %>">
+                                        http://localhost:8001/url/<%= url.shortURL %></a>
+                                </td>
+                                <td>
+                                    <%= url.redirectURL %>
+                                </td>
+                                <td>
+                                    <%= url.visitorHistory.length %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <% } %>
 </body>
 
 </html>
