@@ -20,7 +20,7 @@
 
     <!-- backend sy jo data ata h wo locals k andr hota h -->
     <% if (locals.shortID) { %>
-        <p>http:localhost:8001/url/<%= shortID %>
+        <p>http:localhost:5001/url/<%= shortID %>
         </p>
         <% } %>
 
@@ -35,7 +35,7 @@
             <br /><br />
 
 
-            <% if (locals.URLs) { %>
+            <% if (locals.entries) { %>
                 <table>
                     <thead>
                         <th>S.no</th>
@@ -45,14 +45,14 @@
                     </thead>
 
                     <tbody>
-                        <% URLs.forEach((url, index)=> { %>
+                        <% entries.forEach((url, index)=> { %>
                             <tr>
                                 <td>
                                     <%= index+1 %>
                                 </td>
                                 <td>
-                                    <a target="_blank" href="http://localhost:8001/url/<%= url.shortURL %>">
-                                        http://localhost:8001/url/<%= url.shortURL %></a>
+                                    <a target="_blank" href="http://localhost:5001/url/<%= url.shortURL %>">
+                                        http://localhost:5001/url/<%= url.shortURL %></a>
                                 </td>
                                 <td>
                                     <%= url.redirectURL %>

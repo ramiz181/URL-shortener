@@ -1,11 +1,34 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv'
 
-export const dbConnection = async () => {
-    await mongoose.connect(process.env.mongoDB_URL)
-        .then((e) => {
-            console.log(`Connected to mongoDB atlas: ${e.connection.port}, ${e.connection.name}`);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-}
+dotenv.config();
+
+export const dbAuthConnection = mongoose.createConnection(
+    process.env.MONGO_URI1
+);
+
+export const dbURLConnection = mongoose.createConnection(
+    process.env.MONGO_URI2
+);
+
+
+
+dbAuthConnection.on("connected", () => {
+    console.log(
+        `User - MongoDB Atlas connected: PORT: ${dbAuthConnection.port}, name: ${dbAuthConnection.name}`
+    );
+});
+dbAuthConnection.on("error", (err) => {
+    console.error("User DB connection error:", err);
+});
+
+
+
+dbURLConnection.on("connected", () => {
+    console.log(
+        `URL - MongoDB Atlas connected: PORT: ${dbURLConnection.port}, name: ${dbURLConnection.name}`
+    );
+});
+dbURLConnection.on("error", (err) => {
+    console.error("URL DB connection error:", err);
+});

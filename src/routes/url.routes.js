@@ -7,5 +7,4 @@ router.post(('/'), handleGenerateURL)
 router.get('/:shortID', handleRedirectURL)
 router.get('/analytics/:shortID', handleGetAnalytics)
 
-
 export default router

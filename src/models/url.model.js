@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
+import { dbURLConnection } from "../config/db.config.js";
 
 const urlSchema = new mongoose.Schema({
     shortURL: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     redirectURL: {
@@ -15,9 +16,12 @@ const urlSchema = new mongoose.Schema({
         timestamp: {
             type: String
         }
-    }]
+    }],
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'AuthUser'
+    }
 }, { timestamps: true }
 );
 
-
-export const URL = mongoose.model('URL', urlSchema)
+export const URL = dbURLConnection.model('URL', urlSchema)
